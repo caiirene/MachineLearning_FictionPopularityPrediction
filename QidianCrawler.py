@@ -23,7 +23,7 @@ def get_one_book(url):
     book_data = {}
     try:
         driver.get(url)
-        wait = WebDriverWait(driver, 5)
+        wait = WebDriverWait(driver, 1)
         error_element = driver.find_elements(By.CSS_SELECTOR, "div.error-wrap-new")
         if error_element:
             return None
@@ -162,7 +162,7 @@ with open('QidianBooks.csv', 'a', newline='', encoding='utf-8') as csvfile:
     if csvfile.tell() == 0:  # 如果文件为空，则写入表头
         writer.writeheader()
 
-    for book_id in range(1038308355, 1038309000 + 1):
+    for book_id in range(1038308622, 1038309000 + 1):
         url = f"https://www.qidian.com/book/{book_id}/"
         book_data = get_one_book(url)
         if book_data:
