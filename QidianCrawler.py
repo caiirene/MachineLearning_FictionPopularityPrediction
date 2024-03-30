@@ -16,8 +16,8 @@ options.add_argument("--disable-blink-features=AutomationControlled")
 driver = webdriver.Chrome(service=service, options=options)
 
 # 定义全局计数器
-error_count = 0
-first_error_book_id = None
+error_count = [0]
+first_error_book_id = [None]
 
 def get_one_book(url):
     book_data = {}
@@ -146,11 +146,11 @@ def get_one_book(url):
 
     except Exception as e:
         print(f"报错：Error while processing URL {url}")
-        if error_count == 0:
-            first_error_book_id = url.split('/')[-2]  # 获取第一次出错的 book_id
-        error_count += 1
-        if error_count >= 10:
-            print(f"连续10次爬取失败，停止程序。起始失败的book_id为：{first_error_book_id}")
+        if error_count[0] == 0:
+            first_error_book_id[0] = url.split('/')[-2]  # 获取第一次出错的 book_id
+        error_count[0] += 1
+        if error_count[0] >= 10:
+            print(f"连续10次爬取失败，停止程序。起始失败的book_id为：{first_error_book_id[0]}")
             exit()  # 停止程序
         return None
 
@@ -162,7 +162,7 @@ with open('QidianBooks.csv', 'a', newline='', encoding='utf-8') as csvfile:
     if csvfile.tell() == 0:  # 如果文件为空，则写入表头
         writer.writeheader()
 
-    for book_id in range(1038308622, 1038309000 + 1):
+    for book_id in range(1038308634, 1038309000 + 1):
         url = f"https://www.qidian.com/book/{book_id}/"
         book_data = get_one_book(url)
         if book_data:
