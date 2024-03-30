@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 import csv
 
 fieldnames = ['book_id', 'book_name', 'latest_update_time', 'latest_chapter', 'word_count', 'total_recommend', 'weekly_recommend', 'book_intro_detail', 'book_intro', 'status', 'contract_vip', 'remaining_attributes', 'author_level', 'total_works', 'total_creation_words', 'creation_days']
@@ -161,7 +162,7 @@ with open('QidianBooks.csv', 'a', newline='', encoding='utf-8') as csvfile:
     if csvfile.tell() == 0:  # 如果文件为空，则写入表头
         writer.writeheader()
 
-    for book_id in range(1038308331, 1038308331 + 1):
+    for book_id in range(1038308355, 1038309000 + 1):
         url = f"https://www.qidian.com/book/{book_id}/"
         book_data = get_one_book(url)
         if book_data:
