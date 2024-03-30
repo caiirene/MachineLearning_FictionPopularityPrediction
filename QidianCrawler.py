@@ -32,12 +32,18 @@ def get_one_book(url):
         book_data['book_name'] = book_name_tag.text.strip()
 
         # 获取最后更新时间
-        latest_update_time_span = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "span.update-time")))
-        book_data['latest_update_time'] = latest_update_time_span.text[5:15]
+        try:
+            latest_update_time_span = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "span.update-time")))
+            book_data['latest_update_time'] = latest_update_time_span.text[5:15]
+        except TimeoutException:
+            book_data['latest_update_time'] = "0000-00-00"
 
         # 获取最新章节
-        latest_chapter_link = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.book-latest-chapter")))
-        book_data['latest_chapter'] = latest_chapter_link.text
+        try:
+            latest_chapter_link = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.book-latest-chapter")))
+            book_data['latest_chapter'] = latest_chapter_link.text
+        except TimeoutException:
+            book_data['latest_chapter'] = "none"
 
         # 获取字数
         word_count_em = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "p.count > em:nth-child(1)")))
