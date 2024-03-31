@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import csv
 
-fieldnames = ['book_id', 'book_name', 'latest_update_time', 'latest_chapter', 'word_count', 'total_recommend', 'weekly_recommend', 'book_intro_detail', 'book_intro', 'status', 'contract_vip', 'remaining_attributes', 'author_level', 'total_works', 'total_creation_words', 'creation_days']
+fieldnames = ['book_id', 'book_name', 'latest_update_time', 'latest_chapter', 'word_count', 'total_recommend', 'weekly_recommend', 'book_intro_detail', 'book_intro', 'status', 'contract_vip', 'remaining_attributes', 'author_level', 'total_works', 'total_creation_words', 'creation_days','author']
 
 service = Service(ChromeDriverManager().install())
 options = webdriver.ChromeOptions()
@@ -31,6 +31,15 @@ def get_one_book(url,error_count):
         # 获取书名
         book_name_tag = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "h1#bookName")))
         book_data['book_name'] = book_name_tag.text.strip()
+
+        # 获取作者
+        try:
+            author_span = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "span.author")))
+            author = author_span.text
+        except Exception as e:
+            print(f"Error while processing URL {url}: {e}")
+            author = "作者:无"
+        book_data['author'] = author
 
         # 获取最后更新时间
         try:
@@ -111,7 +120,7 @@ def get_one_book(url,error_count):
         author_level = -1  # 默认值
         for elem in author_level_elements:
             span_text = elem.find_element(By.TAG_NAME, "span").text.strip()
-            if "level-platina" in elem.get_attribute("class"):
+              if "level-platina" in elem.get_attribute("class"):
                 author_level = 7
             elif "level-lv" in elem.get_attribute("class"):
                 author_level = int(span_text.split('.')[1])  # "Lv.x" 中的 x
@@ -162,7 +171,7 @@ with open('QidianBooks.csv', 'a', newline='', encoding='utf-8') as csvfile:
     if csvfile.tell() == 0:  # 如果文件为空，则写入表头
         writer.writeheader()
 
-    for book_id in range(1038309000, 1038309000 + 1):
+    for book_id in range(1038310000, 1038311000 + 1):
         url = f"https://www.qidian.com/book/{book_id}/"
         book_data = get_one_book(url,error_count)
         if book_data:
