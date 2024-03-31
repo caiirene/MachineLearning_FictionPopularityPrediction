@@ -171,7 +171,7 @@ with open('QidianBooks.csv', 'a', newline='', encoding='utf-8') as csvfile:
     if csvfile.tell() == 0:  # 如果文件为空，则写入表头
         writer.writeheader()
 
-    for book_id in range(1038312009, 1038314000 + 1):
+    for book_id in range(1038314000, 1038315000 + 1):
         url = f"https://www.qidian.com/book/{book_id}/"
         book_data = get_one_book(url,error_count)
         if book_data:
