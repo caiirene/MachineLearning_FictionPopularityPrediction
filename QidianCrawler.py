@@ -19,7 +19,7 @@ driver = webdriver.Chrome(service=service, options=options)
 error_count = [0]
 first_error_book_id = [None]
 
-def get_one_book(url):
+def get_one_book(url,error_count):
     book_data = {}
     try:
         driver.get(url)
@@ -162,9 +162,9 @@ with open('QidianBooks.csv', 'a', newline='', encoding='utf-8') as csvfile:
     if csvfile.tell() == 0:  # 如果文件为空，则写入表头
         writer.writeheader()
 
-    for book_id in range(1038308634, 1038309000 + 1):
+    for book_id in range(1038308720, 1038309000 + 1):
         url = f"https://www.qidian.com/book/{book_id}/"
-        book_data = get_one_book(url)
+        book_data = get_one_book(url,error_count)
         if book_data:
             book_data['book_id'] = book_id
             print(f"{book_id}爬取成功！！！！！！！！！！！！！！！！！！！！！！！")
