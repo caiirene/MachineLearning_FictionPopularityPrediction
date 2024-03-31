@@ -120,7 +120,7 @@ def get_one_book(url,error_count):
         author_level = -1  # 默认值
         for elem in author_level_elements:
             span_text = elem.find_element(By.TAG_NAME, "span").text.strip()
-              if "level-platina" in elem.get_attribute("class"):
+            if "level-platina" in elem.get_attribute("class"):
                 author_level = 7
             elif "level-lv" in elem.get_attribute("class"):
                 author_level = int(span_text.split('.')[1])  # "Lv.x" 中的 x
