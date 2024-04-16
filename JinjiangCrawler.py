@@ -14,14 +14,17 @@ fieldnames = [
     'NonVIP_average_click', 
     'reviews_num', 
     'collected_num', 
-    'nutrient_num',
-    'credits',
+    'nutrient_num', 
     'genre', 
     'perspective', 
     'progress', 
+    'copyright', 
     'contract_status',
-    'chapter_launch_time'
+    'credits',
+    'chapter_launch_time',
+    'total_word_count'  # 新增字段
 ]
+
 
 
 service = Service(ChromeDriverManager().install())
@@ -34,7 +37,7 @@ def get_one_book(url):
     book_data = {}
     try:
         driver.get(url)
-        wait = WebDriverWait(driver, 1)
+        wait = WebDriverWait(driver, 2)
         
         # 检查是否存在提示文本“该文不存在或者已经删除”
         error_element = driver.find_elements(By.CSS_SELECTOR, "center[style='font-size:16px;color:red;font-weight:bold;margin-top:20px']")
@@ -162,7 +165,21 @@ def get_one_book(url):
         except Exception as e:
             print(f"Failed to retrieve chapter launch time for URL {url}: {e}")
             book_data['chapter_launch_time'] = 'Error'  # 如果出现异常，设置为错误标志
-        
+
+
+        try:
+            # 获取全文字数
+            total_word_count_span = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "span[itemprop='wordCount']")))
+            total_word_count_text = total_word_count_span.text.strip()
+            
+            # 提取数字部分
+            total_word_count = ''.join(filter(str.isdigit, total_word_count_text))
+            book_data['total_word_count'] = int(total_word_count) if total_word_count else 0
+
+        except Exception as e:
+            print(f"Failed to retrieve total word count for URL {url}: {e}")
+            book_data['total_word_count'] = 0  # 如果出现异常，设置为0
+
 
         return book_data
 
@@ -172,12 +189,12 @@ def get_one_book(url):
 
 count = 0
 
-with open('JinjiangBooks.csv', 'a', newline='', encoding='utf-8') as csvfile:
+with open('JinjiangBooksNew.csv', 'a', newline='', encoding='utf-8') as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     if csvfile.tell() == 0:  # 如果文件为空，则写入表头
         writer.writeheader()
 
-    for book_id in range(3581942, 4581942):  # 示例中仅爬取前100本书
+    for book_id in range(3607084, 6581942, 4):  # 示例中仅爬取前100本书
         url = f"http://www.jjwxc.net/onebook.php?novelid={book_id}"
         book_data = get_one_book(url)
         if book_data:
