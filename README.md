@@ -9,3 +9,4 @@ Please help:
 
 ## log-Irene: March 30th 2024 15:19 -- Qidian Crawler -- bookId 1038307060-1038308330 done
 ## log-Irene: March 31st 2024 11:16 -- Qidian Crawler -- bookId 1038307060-1038316000 done
+## log-Irene: April 16th 2024 16:46 -- Jinjiang csv in progress, don't use that.
