@@ -18,7 +18,6 @@ fieldnames = [
     'genre', 
     'perspective', 
     'progress', 
-    'copyright', 
     'contract_status',
     'credits',
     'chapter_launch_time',
