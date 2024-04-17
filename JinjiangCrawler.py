@@ -194,7 +194,7 @@ with open('JinjiangBooksNew.csv', 'a', newline='', encoding='utf-8') as csvfile:
     if csvfile.tell() == 0:  # 如果文件为空，则写入表头
         writer.writeheader()
 
-    for book_id in range(3607084, 6581942, 4):  # 示例中仅爬取前100本书
+    for book_id in range(3610733, 6581942, 4):  # 示例中仅爬取前100本书
         url = f"http://www.jjwxc.net/onebook.php?novelid={book_id}"
         book_data = get_one_book(url)
         if book_data:
