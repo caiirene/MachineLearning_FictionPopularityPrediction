@@ -14,12 +14,12 @@ fieldnames = [
     'NonVIP_average_click', 
     'reviews_num', 
     'collected_num', 
-    'nutrient_num', 
+    'nutrient_num',
+    'credits',
     'genre', 
     'perspective', 
     'progress', 
-    'contract_status',
-    'credits',
+    'contract_status',    
     'chapter_launch_time',
     'total_word_count'  # 新增字段
 ]
