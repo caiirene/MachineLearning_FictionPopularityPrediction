@@ -1,12 +1,23 @@
-# MachineLearning_FictionPopularityPrediction
+# Predictive Machine Learning Model for Online Fiction Clicks
 
+## Project Overview
+This project develops a machine learning model to predict the click rates of online novels. Our final model is documented in the Jupyter Notebook titled `CleanJinjiangModel.ipynb`.
 
-Please help:
-1. download all the files.
-2. within range 1016000000 to 2000000000, change the for-loop range in line 164
-3. run it
-* Qidian only allow 100 good url per try. So, help me.
+## Key Performance Metrics
+The model's performance was evaluated using k-fold cross-validation, resulting in the following metrics:
+- **Average Mean Squared Error (MSE)**: 8,404,515.651321704
+- **Average R²**: 0.8357806345931185
 
-## log-Irene: March 30th 2024 15:19 -- Qidian Crawler -- bookId 1038307060-1038308330 done
-## log-Irene: March 31st 2024 11:16 -- Qidian Crawler -- bookId 1038307060-1038316000 done
-## log-Irene: April 16th 2024 16:46 -- Jinjiang csv in progress, don't use that.
+## Important Files
+1. **JinjiangBooks.csv**: Raw data scraped from the Jinjiang website, containing information on 15,500 books.
+2. **QidianBooks.csv**: Raw data scraped from the Qidian website, including details on 1,000 books.
+3. **processed_data.csv**: Preprocessed data from Jinjiang, ready for model training.
+4. **CleanJinjiangModel.ipynb**: Notebook containing the final model's training process. To retrieve data for the report's tables, run the code blocks in this notebook.
+5. **JinjiangModel.ipynb**: Comprehensive notebook with all code used for data analysis and model building. The content is extensive and unstructured, but it provides a complete overview of the project's methodology.
+
+## Final Model Training
+The final model training process can be found in the second to last code block of `CleanJinjiangModel.ipynb`.
+
+## Usage
+To work with this project, clone the repository and ensure you have Jupyter Notebook installed. Open `CleanJinjiangModel.ipynb` to access the finalized training procedures and `JinjiangModel.ipynb` for a more detailed exploration of the data and preliminary modeling steps.
+
