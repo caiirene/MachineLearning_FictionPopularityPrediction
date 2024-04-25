@@ -1,0 +1,54 @@
+NonVIP_average_click: Average clicks on non-VIP chapters
+reviews_num: numbers of review in total chapters
+collected_num: number of readers who saved the book into collection
+nutrient_num: a parameter used by JJWXC website to measure ???
+credits,progress: book is still in progress; number of credits received 
+contract_status: status showing if a book is signed by publisher
+total_word_count
+
+top_genre_
+    top_genre_原创
+    top_genre_未知
+    top_genre_衍生
+    top_genre_评论
+    top_genre_诗歌
+    top_genre_随笔
+sub_genre1_
+    sub_genre1_女尊
+    sub_genre1_无
+    sub_genre1_无CP
+    sub_genre1_百合
+    sub_genre1_纯爱
+    sub_genre1_言情
+sub_genre2_
+    sub_genre2_古色古香
+    sub_genre2_幻想未来
+    sub_genre2_无
+    sub_genre2_架空历史
+    sub_genre2_近代现代
+sub_genre3_
+    sub_genre3_东方衍生
+    sub_genre3_仙侠
+    sub_genre3_传奇
+    sub_genre3_其他衍生
+    sub_genre3_剧情
+    sub_genre3_古典衍生
+    sub_genre3_奇幻
+    sub_genre3_悬疑
+    sub_genre3_惊悚
+    sub_genre3_无
+    sub_genre3_武侠
+    sub_genre3_游戏
+    sub_genre3_爱情
+    sub_genre3_科幻
+    sub_genre3_童话
+    sub_genre3_西方衍生
+    sub_genre3_轻小说
+perspective_NONE
+perspective_不明
+perspective_主受
+perspective_主攻
+perspective_互攻
+perspective_女主
+perspective_男主
+days_from_min_date
