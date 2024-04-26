@@ -1,11 +1,13 @@
-NonVIP_average_click: Average clicks on non-VIP chapters
-reviews_num: numbers of review in total chapters
-collected_num: number of readers who saved the book into collection
-nutrient_num: a parameter used by JJWXC website to measure ???
-credits,progress: book is still in progress; number of credits received 
-contract_status: status showing if a book is signed by publisher
-total_word_count
+NonVIP_average_click: Average clicks on non-VIP chapters that are open for all readers, registered or non-registered
+reviews_num: numbers of reviews across all chapters
+collected_num: number of registered readers who saved the book into personal collection
+nutrient_num: a parameter used by JJWXC website to measure clicks, we did not use this parameter in our study
+credits,progress:  number of credits received from registered readers and the book is still unfinished
+contract_status: status showing if a book is signed by a publisher
+total_word_count: total words of the book
 
+
+Below are arbitrary labels used by JJWXC for their own records, which we have converted into binary code for our analysis to avoid linguistic bias
 top_genre_
     top_genre_原创
     top_genre_未知
@@ -44,11 +46,13 @@ sub_genre3_
     sub_genre3_童话
     sub_genre3_西方衍生
     sub_genre3_轻小说
-perspective_NONE
-perspective_不明
-perspective_主受
-perspective_主攻
-perspective_互攻
-perspective_女主
-perspective_男主
+
+perspective
+    perspective_NONE
+    perspective_不明
+    perspective_主受
+    perspective_主攻
+    perspective_互攻
+    perspective_女主
+    perspective_男主
 days_from_min_date
